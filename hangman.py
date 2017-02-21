@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 app.secret_key = '\x1f!=\x12\xe3"\xa0\x18\xb9\x96F\x12?\xe3\x8f\xffad\x13\xe1Z&F\xba'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hangman_game_local.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hangman.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
