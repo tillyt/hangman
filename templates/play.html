@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+
+
+
+    <div class="text-centered">
+      <h4>Statistics:</h4> 
+      <h5><span class="text-success"> Games won: {{ session.wins }} </span>, <span class="text-danger"> Games lost: {{ session.losses }} </span></h5> 
+    </div>
+
+
+
+
+  <div class="jumbotron">
+    <img src="{{ url_for('static', filename='img/hangman_'+game.errors+'.png') }}">
+
+    <h4>{{ game.current }} </h4>
+
+  </div>
+
+
+
+  {% if game.finished %}
+    {% if game.won %}
+      <div class="alert alert-success" role="alert">
+        <strong>Congrats!</strong> You won, the word is {{ game.word }}
+      </div>
+    {% endif %}
+    {% if game.lost %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Oh snap!</strong> You lose, the word was {{ game.word }}
+    </div>
+    {% endif %}
+  {% endif %}
+
+
+
+  {% if not game.finished %}
+
+  <div class="row marketing">
+
+
+    <div class="col-sm-6">
+      <h4>Try Letter:</h4>
+
+      <form method="post" id="letter-form" class="form-inline vspace">
+        <div class="form-group">
+          <input class="input-lg text-uppercase" maxlength="1" size="1"
+          name="letter" autocomplete="off" autofocus>
+        </div>
+        <!-- <button type="submit" class="btn btn-default btn-lg">Try letter</button> -->
+      </form>
+      {% endif %}
+
+    </div>
+
+    <div class="col-sm-6">
+      <h4>Letters Used</h4>
+      <p>{{ game.wrong_letters }}</p>
+    </div>
+
+  </div>
+
+{% endblock %}
